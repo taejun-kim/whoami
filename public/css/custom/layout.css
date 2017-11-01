@@ -1,0 +1,45 @@
+section > .table {
+    display: table;
+}
+
+section > .table > .cell {
+    display: table-cell;
+    vertical-align: middle;
+    padding: 10px;
+}
+
+section > .table > .w350 {
+    width: 350px;
+}
+
+section > .table > .cell > .h400 {
+    height: 400px;
+}
+
+section > .table > .cell > p {
+    line-height: 2.3rem;
+}
+
+section > .table > .cell > .title {
+    font-size: 1em;
+}
+
+section > .table > .cell > .desc {
+    font-size: 0.5em;
+}
+
+section > .h250 {
+    height: 250px;
+}
+
+section > .h300 {
+    height: 300px;
+}
+
+section > .h350 {
+    height: 350px;
+}
+
+section > .h400 {
+    height: 400px;
+}

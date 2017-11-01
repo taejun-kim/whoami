@@ -1,0 +1,23 @@
+.intro-title {
+    background-color: rgba(0,0,0,0.5);
+    float: right;
+    position: relative;
+    bottom: -300px;
+    padding-left: 20px;
+}
+
+section > .text-content {
+    font-size: 0.8em;
+    text-align: left;
+}
+
+p > .red {
+    color: #dc322f;
+    font-size: 1.5em;
+}
+
+p > .blue {
+    color: #2a76dd;
+    font-size: 1.5em;
+}
+

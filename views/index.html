@@ -1,0 +1,258 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+  <title>whoami?</title>
+
+  <link rel="stylesheet" href="css/reveal.css">
+  <link rel="stylesheet" href="css/theme/black.css">
+  <link rel="stylesheet" href="css/custom/text.css">
+  <link rel="stylesheet" href="css/custom/layout.css">
+
+  <!-- Theme used for syntax highlighting of code -->
+  <link rel="stylesheet" href="lib/css/zenburn.css">
+
+  <!-- Printing and PDF exports -->
+  <script>
+    var link = document.createElement( 'link' );
+    link.rel = 'stylesheet';
+    link.type = 'text/css';
+    link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+    document.getElementsByTagName( 'head' )[0].appendChild( link );
+  </script>
+</head>
+<body>
+<div class="reveal">
+  <div class="slides">
+    <section data-background-image="images/etc/me.jpg">
+      <h2 class="intro-title">개발자 김태준 이력서</h2>
+    </section>
+
+    <section>
+      <h2>인적사항</h2>
+      <pre>
+        <code class="hljs" data-trim contenteditable>
+          class taesca {
+            constructor() {
+              this.name = 'kim taejun';
+              this.phone = '010-7299-8509';
+              this.email = 'taescais@gmail.com';
+              this.skill = ['HTML', 'CSS', 'javascript', 'angular.js',
+                            'node.js', 'postgreSQL', 'mySQL',
+                            'redis', 'AWS'];
+            }
+            static renderBy(company) {
+              if (!company) return new taesca();
+              return new taesca()
+                .setCompany(company);
+            }
+          }
+        </code>
+      </pre>
+    </section>
+
+    <section>
+      <h3>경력사항</h3>
+      <div class="table">
+        <div class="cell">
+          <img width="100px" height="100px" src="images/smatoos/smatoos.png">
+        </div>
+        <div class="cell w350">
+          <p class="title">스마투스</p>
+          <p class="desc">2016년 11월 ~ 2017년 10월</p>
+        </div>
+        <div class="cell">
+          <img width="100" height="100" src="images/flitto/flitto.png">
+        </div>
+        <div class="cell w350">
+          <p class="title">플리토</p>
+          <p class="desc">2015년 06월 ~ 2016년 11월</p>
+        </div>
+      </div>
+      <div class="table">
+        <div class="cell">
+          <img width="100" height="100" src="images/etc/ktcs.png">
+        </div>
+        <div class="cell w350">
+          <p class="title">kt cs</p>
+          <p class="desc">2014년 06월 ~ 2015년 06월</p>
+        </div>
+        <div class="cell">
+          <img width="100" height="100" src="images/etc/triphos.jpg">
+        </div>
+        <div class="cell w350">
+          <p class="title">트리포스 (병역특례)</p>
+          <p class="desc">2011년 03월 ~ 2014년 03월</p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>스마투스 2016.11 - 2017.10</h2>
+      <div>
+        <p><span class="red">주도적</span>으로 제가 가진 역량을</p>
+        <p>마음껏 펼쳐볼수 있는 시간들이었어요.</p>
+        <p>스마투스에 입사후에 제가 불편했던 점들을</p>
+        <p>제시하고 개선하는 작업들을 진행하였습니다.</p>
+      </div>
+    </section>
+
+    <section>
+      <h2>개선 작업 목록</h2>
+      <p>1. 문서화</p>
+      <p>2. refactoring</p>
+      <p>3. 개발환경 및 디버깅 (migration)</p>
+      <p>4. DB 통합</p>
+    </section>
+    <section>
+      <div class="text-content">
+        <p>
+          기존 시스템 구조를 파악하기 위해서 문서를 찾아보았지만 기존 문서는 구글에 정리되어있기 때문에 한눈에 파악하기 힘들고 굉장히 불편했습니다.
+          그래서 소스를 통해 비지니스로직을 확인하기도 하였는데 소스는 native PHP코드로 front-end와 back-end 소스가 뒤죽박죽 섞여있어 이 부분
+          또한 쉬운 상황은 아니었습니다.
+        </p>
+        <p>
+          그래서 저는 첫번째로 <span class="blue">문서화</span> 작업을 개선하였습니다.
+        </p>
+      </div>
+    </section>
+
+    <section>
+      <img class="h300" src="images/smatoos/confluence.png" alt="문서정리">
+      <div class="text-content">
+        <p>기존에 사용하던 google docs -> WIKI(conflence) 를 도입하였고 부서별로 공간을 나누어 정리하기 시작하였습니다.</p>
+        <p>처음엔 거부감을 드러내는 분들도 많았지만 먼저 남기고 공유하니 자료가 쌓여갈수록 사용하시는 분들도 많아지고 개발팀 내부적으론 완전히 자리가 잡혔습니다.</p>
+      </div>
+    </section>
+
+    <section>
+      <img class="h250" src="images/etc/manse.png" alt="만세">
+      <div class="text-content">
+        <p>매번 excel에 업로드하던 API 문서를 swagger를 도입하여 git을 통해 관리하고
+          postman과 같은 툴없이도 간편하게 확인 가능하도록 개선하였습니다. </p>
+      </div>
+    </section>
+
+    <section>
+      <div class="text-content">
+        <p>유지보수를 하면서 작업하는 부분들 기준으로 MVC 구조로 front-end 소스와 back-end 소스를 분리하는 <span class="blue">refactoring</span> 작업을 하였습니다.</p>
+        <p>이를 통해 비지니스 로직을 한눈에 파악하기 용이해졌고 front와 back 작업을 분리하여 작업하니 서로 관심사에 집중할수 있게 되었고
+          git을 통한 버전관리에서도 충돌을 줄일수 있었습니다.</p>
+        <p>그리고 DB schema 도 작업자가 이력을 전혀 남기고 있지 않았기 때문에 어떠한 이유에서 어떻게 추가된 테이블이고 칼럼인지 알수가 없었습니다</p>
+        <p>db 버전관리 툴로 flyway를 도입하여 github에 남김으로써 작업자가 누구이고 pull request를 통해 리뷰가 가능하도록 개선하였습니다. </p>
+      </div>
+    </section>
+
+    <section>
+      <div class="text-content">
+        <p>시스템 장애에 너무 쉽게 노출되어있는 <span class="blue">개발환경을 개선</span>해야겠다고 생각했습니다.</p>
+        <p>기존 배포는 aws의 elastic beanstalk 서비스를 이용하여 배포하였고 누가 어떻게 어떤 소스가 배포된건지 이력도 전혀 남지 않았고 테스트 코드도 하나 없었습니다.</p>
+        <p>그래서 jenkins와 github을 연동하여 어떤 소스가 어떤 서버에 누가 언제 적용하였는지 이력을 남기고 test case가 동작하여 실패시엔 배포가 취소되도록 구현하여
+          장애에 어느정도 대비할수 있도록 개선하였습니다.</p>
+        <p>그리고 장애가 생기더라도 다른 알림이 없기에 cs를 통하거나 서버부하와 같은 경고 알람을 통해서만 파악이 가능했습니다.</p>
+        <p>이 부분은 aws lambda와 dynamoDB를 이용하여 slack에 alram을 보내도록 구조를 개선하였습니다.</p>
+      </div>
+    </section>
+
+    <section>
+      <div class="text-content">
+        <p>그리고 가장 큰 이슈였던 DB와 사이트의 국가별 파편화 문제가 있었습니다.</p>
+        <p>이 부분은 너무 큰 이슈였기 때문에 장기적으로 계획을 잡고 점진적으로 개선을 이루기로 합의하고 개선 작업을 시작하게 되었고 첫번째 작업으로
+          API 서버를 개선하여 국가별로 분리된 back-end 소스를 하나의 API 서버로 통합하고 통합작업 후에
+          <span class="blue">DB를 통합</span>하는 작업이 들어갔습니다.</p>
+        <p>가장 시급했던 contents DB는 통합하였지만 회사 내부사정이 어려운 과정을 겪으며 아쉽게도 전체 국가 데이터를 모으진 못하고 퇴사를 하게 되었습니다.</p>
+      </div>
+    </section>
+
+    <section>
+      <h2>시스템 구조 개선</h2>
+      <img class="h400" src="images/smatoos/structure.png" alt="서버구조">
+      <div class="text-content">
+        <p><span class="blue">개발환경 개선</span>과 <span class="blue">DB 통합</span>을 위한 <span class="blue">API 서버 migration</span>의 결과로 위와 같은 변화가 있었습니다.</p>
+      </div>
+    </section>
+
+    <section>
+      <img class="h300" src="images/etc/mybgm.png" alt="외부활동">
+      <div class="text-content">
+        <p>외부 활동으로 좋은 기회가 생겨서 한양대 창업동아리 학생들과 coworking 작업을 할 기회가 있었습니다.</p>
+        <p>멘토로 참여하여 node.js & react를 이용하여 웹서비스를 제작하였는데 결과물은 비록 부족한 부분도 많고 좌충우돌 많은 이슈가 있었지만</p>
+        <p>열정적이고 겸손한 친구들을 보며 저 또한 많은 것을 배울수 있었던 시간이었습니다. </p>
+      </div>
+    </section>
+
+    <section>
+      <img class="h400" src="images/smatoos/recommand.png" alt="추천서">
+      <p>비록 회사가 어려워져 함께 할수 없게 되었지만 뜻 깊은 시간이었습니다.</p>
+    </section>
+
+    <section>
+      <h2>플리토 2015.06 - 2016.11</h2>
+      <p>좋은 팀을 만나 즐겁게 일하는 경험을 했어요.</p>
+      <img class="h400" src="images/flitto/intro.jpg" alt="intro">
+    </section>
+
+    <section data-background="#ffffff">
+      <img class="h400" src="images/flitto/skill.png" alt="기술들">
+      <div class="text-content">
+        <p>새로운 기술들을 만나게 되었고 이 때의 경험들은 지금 제게 뼈와 살같은 시간들이었어요.</p>
+      </div>
+    </section>
+
+    <section>
+      <div class="table">
+        <div class="cell">
+          <img class="h400" src="images/flitto/convention.png" alt="code convention">
+        </div>
+        <div class="cell">
+          <img class="h400" src="images/flitto/cowork.jpg" alt="teamwork">
+        </div>
+      </div>
+      <div class="text-content">
+        <p>협업의 중요성과 팀워크의 소중함을 배웠습니다.</p>
+        <p>pair program, code review, 팀세미나와 같은 쉽게 하기 힘든 경험들을 통해 많은것을 느꼈어요.</p>
+      </div>
+    </section>
+
+    <section>
+      <div class="text-content">
+        <p>진행한 프로젝트들에서 가장 기억에 남는건 이벤트 프로젝트인데</p>
+        <p>이벤트 특성상 많은 대량의 데이터를 일시적으로 처리해야하는 케이스가 많았습니다.</p>
+        <p>이 때 비동기로 많은 로직들을 처리하게 되는데 비동기 코드도 엄청나게 많은 실행이 중복되면 시스템 콜스택에도 한계가 오는것을 경험했습니다.</p>
+        <p>플리토에서 많은 것을 배웠지만 가장 값진 것은 항상 구현이 전부가 아닌 원리를 공부하여 <span class="red">제대로 알고 적용</span>해야한다는 경험이었습니다.</p>
+      </div>
+    </section>
+
+    <section>
+      <div>
+        <p>긴 이야기를 읽어주셔서 감사합니다.</p>
+        <p>앞으로도 성취감을 느끼며 함께 <span class="red">즐겁게 성장</span>할 수 있는 동료들을 만나길 바라며 이야기를 마무리하겠습니다.</p>
+        <p>감사합니다.</p>
+      </div>
+    </section>
+
+  </div>
+</div>
+
+<script src="lib/js/head.min.js"></script>
+<script src="js/reveal.js"></script>
+
+<script>
+  Reveal.initialize({
+    history: true,
+    multiplex: {
+      secret: '15082200900262510835',
+      id: '131f2d7427d4060b',
+      url: 'https://reveal.302.at'
+    },
+    // More info https://github.com/hakimel/reveal.js#dependencies
+    dependencies: [
+      { src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
+    ]
+  });
+
+</script>
+</body>
+</html>
