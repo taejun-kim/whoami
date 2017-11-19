@@ -1,0 +1,186 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+  <title>whoami?</title>
+
+  <link rel="stylesheet" href="css/reveal.css">
+  <link rel="stylesheet" href="css/theme/black.css">
+  <link rel="stylesheet" href="css/custom/text.css">
+  <link rel="stylesheet" href="css/custom/layout.css">
+
+  <!-- Theme used for syntax highlighting of code -->
+  <link rel="stylesheet" href="lib/css/zenburn.css">
+
+  <!-- Printing and PDF exports -->
+  <script>
+    var link = document.createElement( 'link' );
+    link.rel = 'stylesheet';
+    link.type = 'text/css';
+    link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+    document.getElementsByTagName( 'head' )[0].appendChild( link );
+  </script>
+</head>
+<body>
+<div class="reveal">
+  <div class="slides">
+    <section data-background-image="images/timetable/main.png">
+      <h2 class="intro-title">timetable 과제 회고록</h2>
+    </section>
+
+    <section>
+      <div>
+        <p>주어진 과제 기간은 <span class="blue">3일.</span></p>
+        <p>하지만 개인적인 일정으로 목요일부터 금요일까지 <span class="red">2일</span>의 기간동안 개발을 했지만 사실 처음 과제를 받았을 때 굉장히 쉽게 생각했고 문제가 없어보였다.</p>
+      </div>
+    </section>
+
+    <section>
+      <div>
+        <img class="h300" src="images/timetable/otl.jpg" alt="OTL">
+        <p><span class="red">하지만</span> 생각보다 만만치 않았다.</p>
+        <p>늘 함께 논의하던 문제를 혼자 고민하고 짧은 시간에 결정하는게 힘들었던거 같다.</p>
+      </div>
+    </section>
+
+    <section>
+      <h3>개발 순서</h3>
+      <p>1. 화면기획</p>
+      <p>2. 데이터베이스 설계</p>
+      <p>3. API 설계</p>
+      <p>4. back-end 기술 스택 구성 (서버 세팅 및 플랫폼 결정)</p>
+      <p>5. back-end 구현</p>
+      <p>6. front-end 기술 스택 고민</p>
+      <p>7. front-end 구현</p>
+      <p>8. test & 배포</p>
+    </section>
+
+    <section>
+      <h2>화면기획</h2>
+      <div class="text-content">
+        <p>화면을 기획해본 경험이 있긴하지만 전문적인 영역은 아니었기에</p>
+        <p>기존 <span class="blue">레퍼런스를 많이 참고</span>하려고 노력했다.</p>
+        <p>'용도별로 저장해서 구분해서 찾아볼수 있게 하면 어떨까' 란 생각으로 시간표를 표출하는 화면 이전에 리스트로 볼 수 있게 넣었다.</p>
+      </div>
+    </section>
+
+    <section>
+      <img class="h300" src="images/timetable/db_schema.png" alt="디비 구조">
+      <div class="text-content">
+        <p>데이터베이스 구조는 기능 구현을 위한 최소한의 구조만 구현했습니다. </p>
+        <p>유저별로 구성했던 목록을 저장하고 이전 기록도 조회할수 있도록 구성했습니다.</p>
+        <p>timetable_courses 테이블을 이용하면 많이 수강한 강의등 유의미한 통계도 낼 수 있을거 같습니다.</p>
+      </div>
+    </section>
+
+    <section>
+      <img class="h300" src="images/timetable/api_list.png" alt="API 목록">
+      <div class="text-content">
+        <p>GET - /courses 강의 목록 조회</p>
+        <p>GET - /timetable/me 내 시간표 조회</p>
+        <p>POST - /timetable/me 내 시간표 저장</p>
+        <p>GET - /timetable/me/:id 내 특정 시간표 상세 조회</p>
+      </div>
+    </section>
+
+    <section>
+      <img class="h300" src="images/timetable/server_structure.png" alt="서버 구조">
+      <div class="text-content">
+        <p>서버는 AWS를 사용하여 구현하였으며 위와 같은 구조로 하고 싶었지만.. </p>
+        <p>저는 서민이기에.. :(</p>
+      </div>
+    </section>
+
+    <section>
+      <img class="h300" src="images/timetable/real_server_structure.png" alt="서버 구조">
+      <div class="text-content">
+        <p>현재 서버는 free tier로 구현 가능한 위와 같은 구조로 구성되어있습니다.</p>
+      </div>
+    </section>
+
+    <section>
+      <img class="h300" src="images/timetable/back_code_structure.png" alt="code 구조">
+      <div class="text-content">
+        <p>코드구조는 MVC구조로 되어있으며 들어온 요청을 route에서 분기하여 service로 보내고</p>
+        <p>service에서 필요한 데이터를 models에서 가져와 비지니스로직 처리 후 vo에서 값을 렌더링하여 값을 client에 보내주는 구성입니다.</p>
+      </div>
+    </section>
+
+    <section>
+      <img class="h300" src="images/timetable/logic_exp.png" alt="주요 로직">
+      <div class="text-content">
+        <p>시간표 모든 경우의 수를 도출하는 로직은 1개의 강의당 3개의 경우를 가지고 있으며 모든 경우의 수는 3c1 * 3c1 * ... = 3^(강의수)</p>
+        <p>여기서 최대한 비교 연산을 줄이기 위해서 강의 비교당 결과에서 겹치는 경우는 실시간으로 제외하며 비교 연산을 하도록 하여 최대한 연산 횟수를 줄였습니다.</p>
+      </div>
+    </section>
+
+    <section>
+      <img class="h300" src="images/timetable/logic.png" alt="주요 로직">
+      <div class="text-content">
+        <p>timetableService.js 에 저 두 함수를 이용하였습니다.</p>
+      </div>
+    </section>
+
+    <section>
+      <div class="text-content">
+        <p>
+          디자인은 제가 할수 있는 영영 밖이기도 하고 시간이 많지 않았기 때문에 아래 템플릿을 커스텀하여 front를 구성하기로 하였습니다.
+        </p>
+        <p>
+          https://github.com/akveo/blur-admin
+        </p>
+
+      </div>
+    </section>
+
+    <section>
+      <div class="text-content">
+        <p>SPA으로 구현하기 위해서 react와 angular를 고민중에 </p>
+        <p>비교적 자유도가 높고</p>
+        <p><span class="red">(=고민을 많이 해야하고 손이 많이 갈 수 있다.)</span></p>
+        <p>덜 익숙한 react보다 시간내 구현을 위해 <span class="blue">angular</span>를 사용하기로 하였습니다.</p>
+      </div>
+    </section>
+
+    <section>
+      <img class="h300" src="images/timetable/testcase.png" alt="테스트">
+      <div class="text-content">
+        <p>TDD 구현으로 mocha와 should를 이용하였습니다. </p>
+      </div>
+    </section>
+
+    <section>
+      <h3>아쉬운 점</h3>
+      <div class="text-content">
+        <p>개인적으로 핵심로직(시간표의 경우 수)을 구현할 때 내 자료구조나 알고리즘에 대한 지식과 경험이 많이 부족했구나라는 반성을 하게 되었습니다.</p>
+        <p>그리고 그 중요성에 대해서도 많이 깨우칠 수 있어서 좋은 경험이었고 front-end쪽 성능을 더 최적화 할 수 있었다는 생각이 들었는데</p>
+        <p>내 작업속도가 느린탓인지 이 부분까지 세심하게 볼 시간이 좀 부족했던거 같다.ㅠㅠ</p>
+        <p>비록 과제라 진행했던 toy project 였지만 꽤 즐거운 경험이었고 기초학문 공부와 front쪽 스킬을 조금 더 연마해야 함을 느꼈습니다.</p>
+      </div>
+    </section>
+
+  </div>
+</div>
+
+<script src="lib/js/head.min.js"></script>
+<script src="js/reveal.js"></script>
+
+<script>
+  Reveal.initialize({
+    history: true,
+    multiplex: {
+      secret: '15082200900262510835',
+      id: '131f2d7427d4060b',
+      url: 'https://reveal.302.at'
+    },
+    // More info https://github.com/hakimel/reveal.js#dependencies
+    dependencies: [
+      { src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
+    ]
+  });
+
+</script>
+</body>
+</html>

@@ -13,6 +13,9 @@ router.route('/_')
     res.redirect('/');
   });
 
+router.route('/timetable')
+  .get(pages.timetable)
+
 router.route('/hc')
   .get(function(req, res) {
     res.send('OK');
